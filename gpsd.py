@@ -190,20 +190,20 @@ if __name__ == "__main__":
 	elif 'restart' == sys.argv[1]:
 		daemon.restart()
 	elif 'gmaps' == sys.argv[1]:
-		r = requests.get(__dbUrl+'/GPS')
+		r = requests.get(__dbUrl+'/get/GPS')
 		_json = json.loads(r.text)
 		url = 'https://maps.google.com?q={Lat},{Lon}'.format(**_json)
 		print url
 	elif 'location' == sys.argv[1]:
-		r = requests.get(__dbUrl+'/GPS')
+		r = requests.get(__dbUrl+'/get/GPS')
 		_json = json.loads(r.text)
 		loc = "Lat: {Lat}\r\nLon: {Lon}\r\nAlt: {Alt}".format(**_json)
 		print loc
 	elif 'json' == sys.argv[1]:
-		r = requests.get(__dbUrl+'/GPS')
+		r = requests.get(__dbUrl+'/get/GPS')
 		print r.text
 	elif 'pjson' == sys.argv[1]:
-		r = requests.get(__dbUrl+'/GPS?pjson')
+		r = requests.get(__dbUrl+'/get/GPS?pjson')
 		print r.text
 	else:
 		print("Unknown command")
